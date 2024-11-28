@@ -50,3 +50,15 @@ def vectorize(data, word2idx):
 
     return word_vector
     
+
+def one_hard_encoding(data):
+    classes = set(data)
+    class_dict = {}
+    N = len(data)
+    K = len(classes)
+    ohe = np.zeros((N, K))
+    for i, clas in zip(range(K), classes):
+        class_dict[clas] = i
+    for i in range(N):
+        ohe[i, class_dict[data[i]]] = 1
+    return ohe
