@@ -9,7 +9,6 @@ import numpy as np
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 import re
-# from array import flattened
 
 
 def tokenize(data, is_pandas=True, want_lemmatize=True):
@@ -29,8 +28,11 @@ def tokenize(data, is_pandas=True, want_lemmatize=True):
         tokens.append(temp_token)
     return tokens
 
-def word2index(data,  starting_index=0):
+
+def word2index(data, existing_word2idx={}):
     word2idx = {}
+    word2idx.update(existing_word2idx)
+    starting_index = len(existing_word2idx)
     counter = starting_index
     for row in data:
         for text in row:
@@ -39,6 +41,7 @@ def word2index(data,  starting_index=0):
                 counter += 1
 
     return word2idx
+
 
 def vectorize(data, word2idx):
     word_vector = np.zeros((len(data), len(word2idx)))
