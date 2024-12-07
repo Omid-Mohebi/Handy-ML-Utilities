@@ -18,13 +18,13 @@ This function tokenizes the input text data, removes stop words, and optionally 
 **Returns:**
 - A list of lists containing the processed tokens.
 
-### 2. `word2index(data, starting_index=0)`
+### 2. `word2index(data, existing_word2idx={})`
 
 This function creates a mapping of words to unique indices.
 
 **Parameters:**
 - `data`: A list of lists containing tokenized text data.
-- `starting_index`: An integer indicating the starting index for the word mapping (default is `0`).
+- `existing_word2idx`: A dictionary of an existing mapping of words(default is `{}`).
 
 **Returns:**
 - A dictionary mapping each unique word to its corresponding index.
